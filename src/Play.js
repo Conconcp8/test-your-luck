@@ -67,7 +67,6 @@ function generateNumber() {
 }
 
 function Play() {
-
   const [guesses, setGuesses] = useState([]);
   const [lastGuess, setLastGuess] = useState();
 
@@ -84,46 +83,37 @@ function Play() {
   const clickEffectRef = useRef();
 
   const handleClick = useCallback(
-    
     (guess) => {
-      
-      clickEffectRef.current.play()
+      clickEffectRef.current.load();
+      clickEffectRef.current.play();
 
-      console.log('you guessed', guess,);
+      console.log('you guessed', guess);
       console.log('mo');
       setGuesses((lastValue) => {
         lastValue.push(guess);
         return lastValue;
       });
       setLastGuess(guess);
-      
 
-      
-
-      if (guess === answer){
-        soundEffectRef.current.play()
+      if (guess === answer) {
+        soundEffectRef.current.play();
       }
-      console.log(gusseslen + " DEBUG")
-      if (guess === answer && gusseslen < 1){
-        fireworksEffectRef.current.play()
+      console.log(gusseslen + ' DEBUG');
+      if (guess === answer && gusseslen < 1) {
+        fireworksEffectRef.current.play();
       }
     },
     [navigate, gusseslen, answer]
   );
   const handleClickReload = useCallback(() => {
-    
     navigate(window.location.reload());
   }, [navigate]);
 
-  
-  
   console.log('answer', answer);
   console.log('guess', lastGuess);
   console.log('allguesses', guesses);
 
   const rightAnswer = answer === lastGuess;
-
-  
 
   return (
     <div className="App">
@@ -158,7 +148,6 @@ function Play() {
                     <div className="after"></div>
                   </div>
                 )}
-                
               </>
             ) : (
               <>
@@ -241,4 +230,3 @@ function Play() {
 }
 
 export default Play;
-
