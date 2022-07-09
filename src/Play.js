@@ -81,15 +81,24 @@ function Play() {
 
   const fireworksEffectRef = useRef();
 
+  const clickEffectRef = useRef();
+
   const handleClick = useCallback(
+    
     (guess) => {
       
-      console.log('you guessed', guess);
+      clickEffectRef.current.play()
+
+      console.log('you guessed', guess,);
+      console.log('mo');
       setGuesses((lastValue) => {
         lastValue.push(guess);
         return lastValue;
       });
       setLastGuess(guess);
+      
+
+      
 
       if (guess === answer){
         soundEffectRef.current.play()
@@ -102,6 +111,7 @@ function Play() {
     [navigate, gusseslen, answer]
   );
   const handleClickReload = useCallback(() => {
+    
     navigate(window.location.reload());
   }, [navigate]);
 
@@ -119,6 +129,7 @@ function Play() {
     <div className="App">
       <audio src="./sound.wav" ref={soundEffectRef} />
       <audio src="./fireworks!!!.wav" loop ref={fireworksEffectRef} />
+      <audio src="./click2.wav" ref={clickEffectRef} />
       <header className="App-header">
         <GameText>
           I'm thinking of a number 1-10. Take your guess at what it is.
