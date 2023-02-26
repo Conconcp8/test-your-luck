@@ -50,6 +50,13 @@ const QueryTextCorrect = styled.h1`
   color: #21a600;
 `;
 
+const WaterMarkText = styled.h1`
+  color: #C8C8C8;
+  font-size: 1rem;
+  margin-top: 7%;
+
+`
+
 const QueryTextIncorrect = styled.h1`
   font-size: 100%;
   margin-top: 3%;
@@ -224,8 +231,13 @@ function Play() {
         <PlayAgainButton onClick={() => handleClickReload()}>
           Play Again
         </PlayAgainButton>
+        <WaterMarkText>
+          Mystic Labs
+        </WaterMarkText>
       </header>
     </div>
+
+    
   );
 }
 
